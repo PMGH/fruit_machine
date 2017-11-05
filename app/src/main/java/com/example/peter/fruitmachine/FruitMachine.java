@@ -107,7 +107,7 @@ public class FruitMachine {
     public int getMaxPrize(){
         for (int i = 0; i < symbols.size(); i++){
             if ((symbols.get(i).getValue() * numSlots) > maxPrize){
-                maxPrize = (symbols.get(i).getValue() * numSlots);
+                maxPrize = (symbols.get(i).getValue() * numSlots) + playCost;
             }
         }
         return maxPrize;
@@ -145,8 +145,9 @@ public class FruitMachine {
         }
     }
 
-    public void payout(){
+    public double payout(){
         addToGameWallet(calculateWinnings());
+        return calculateWinnings();
     }
 
     public String jackpotSiren(){

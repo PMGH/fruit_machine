@@ -82,12 +82,14 @@ public class FruitMachineTest {
         Mockito.when(spyFruitMachine.getRandomNumber()).thenReturn(1);
         spyFruitMachine.spin();
 
-        assertEquals(6, spyFruitMachine.payout());
+        // includes money back for bet
+        assertEquals(7, spyFruitMachine.payout(), 0.1);
     }
 
     @Test
     public void canGetMaxPrize(){
-        assertEquals(45, fruitMachine.getMaxPrize());
+        // includes money back for bet
+        assertEquals(46, fruitMachine.getMaxPrize());
     }
 
     @Test
