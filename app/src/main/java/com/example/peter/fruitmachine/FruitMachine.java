@@ -19,6 +19,7 @@ public class FruitMachine {
     private int maxPrize;
     private int gameWallet;
     private int gambled;
+    private int totalWinnings;
 
     public FruitMachine(int bank, int numSlots, int playCost) {
         this.bank = bank;
@@ -30,6 +31,7 @@ public class FruitMachine {
         this.gameWallet = 0;
         this.playCost = playCost;
         this.gambled = 0;
+        this.totalWinnings = 0;
 
         generateSymbols();
         this.maxPrize = getMaxPrize();
@@ -81,6 +83,10 @@ public class FruitMachine {
         return this.gambled;
     }
 
+    public int getWinnings(){
+        return this.totalWinnings;
+    }
+
     // setters
 
 
@@ -98,6 +104,9 @@ public class FruitMachine {
         gambled += playCost;
     }
 
+    public void addToTotalWinnings(int winnings){
+        totalWinnings += winnings;
+    }
 
     public void payForSpin(){
         gameWallet -= playCost;
@@ -138,16 +147,18 @@ public class FruitMachine {
     public int calculateWinnings(){
         if (checkWin()) {
             int symbolValue = slots.get(0).getValue();
-            int winnings = symbolValue * numSlots;
-            return winnings + playCost;
+            int winnings = (symbolValue * numSlots) + playCost;
+            return winnings;
         } else {
             return 0;
         }
     }
 
     public double payout(){
-        addToGameWallet(calculateWinnings());
-        return calculateWinnings();
+        int winnings = calculateWinnings();
+        addToGameWallet(winnings);
+        addToTotalWinnings(winnings);
+        return winnings;
     }
 
     public String jackpotSiren(){
@@ -186,8 +197,11 @@ public class FruitMachine {
                 // show remaining gameWallet
                 System.out.println("\nYou have £ " + getGameWallet() + " to play with.\n");
 
+                // show total winnings
+                System.out.println("\nYou have won £ " + getWinnings() + " so far.");
+
                 // gamble aware
-                System.out.println("\nBe aware! You have gambled £ " + getGambled() + " so far.\n");
+                System.out.println("Be aware! You have gambled £ " + getGambled() + " so far.\n");
             } else {
                 System.exit(0);
             }
