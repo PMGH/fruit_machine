@@ -83,13 +83,13 @@ public class FruitMachineTest {
         spyFruitMachine.spin();
 
         // includes money back for bet
-        assertEquals(7, spyFruitMachine.payout(), 0.1);
+        assertEquals(31, spyFruitMachine.payout(), 0.1);
     }
 
     @Test
     public void canGetMaxPrize(){
         // includes money back for bet
-        assertEquals(46, fruitMachine.getMaxPrize());
+        assertEquals(136, fruitMachine.getMaxPrize());
     }
 
     @Test
@@ -115,7 +115,5 @@ public class FruitMachineTest {
         assertEquals(50, fruitMachine.getGameWallet());
         assertEquals(0, player.getWallet());
     }
-
-
 
 }
