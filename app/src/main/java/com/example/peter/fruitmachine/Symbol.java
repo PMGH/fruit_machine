@@ -9,15 +9,15 @@ import android.support.text.emoji.widget.EmojiExtractTextLayout;
 
 public enum Symbol {
 
-    APPLE("Apple", 1, "\uD83C\uDF4F"),
-    GRAPES("Grapes", 2, "\uD83C\uDF47"),
-    STRAWBERRY("Strawberry", 3, "\uD83C\uDF53"),
-    PEAR("Pear", 4, "\uD83C\uDF50"),
-    BELL("Bell", 5, "\uD83D\uDD14"),
-    HORSESHOE("Horseshoe", 6, "\uD83D\uDC0E"),
-    SEVEN("Seven", 7, "⓻"),
-    DIAMOND("Diamond", 10, "\uD83D\uDC8E"),
-    CLOVER("Clover", 15, "\uD83C\uDF40");
+    APPLE("Apple", 5, "\uD83C\uDF4F"),
+    GRAPES("Grapes", 10, "\uD83C\uDF47"),
+    STRAWBERRY("Strawberry", 15, "\uD83C\uDF53"),
+    PEAR("Pear", 20, "\uD83C\uDF50"),
+    BELL("Bell", 25, "\uD83D\uDD14"),
+    HORSESHOE("Horseshoe", 30, "\uD83D\uDC0E"),
+    SEVEN("Seven", 35, "⓻"),
+    DIAMOND("Diamond", 40, "\uD83D\uDC8E"),
+    CLOVER("Clover", 45, "\uD83C\uDF40");
 
     private String name;
     private int value;

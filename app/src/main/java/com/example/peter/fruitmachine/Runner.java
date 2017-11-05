@@ -40,8 +40,17 @@ public class Runner {
     }
 
     public static int getUserWallet(Scanner sc) {
-        System.out.print("How much do you have in your wallet?  £ ");
-        int userWallet = Integer.parseInt(sc.nextLine());
+        // stack overflow helped with input validation:
+        int userWallet;
+        do {
+            System.out.print("\nHow much do you have in your wallet?  £ ");
+            while (!sc.hasNextInt()) {
+                String input = sc.next();
+                System.out.printf("%s is not a valid integer.\n", input);
+            }
+            userWallet = sc.nextInt();
+        } while (userWallet < 0);
+
         return userWallet;
     }
 
@@ -49,8 +58,17 @@ public class Runner {
         System.out.println("\nYou have £ " + player.getWallet() + ".");
 
         while (fruitMachine.getGameWallet() == 0){
-            System.out.print("\nHow much would you like to play with?  £ ");
-            int gameFunds = Integer.parseInt(sc.nextLine());
+            // stack overflow helped with input validation:
+            int gameFunds;
+            do {
+                System.out.print("\nHow much would you like to play with?  £ ");
+                while (!sc.hasNextInt()) {
+                    String input = sc.next();
+                    System.out.printf("%s is not a valid integer.\n", input);
+                }
+                gameFunds = sc.nextInt();
+            } while (gameFunds < 0);
+
             if (gameFunds <= player.getWallet()){
                 return gameFunds;
             } else {
